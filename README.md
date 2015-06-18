@@ -9,7 +9,7 @@ Navigate to <Your_Web_Server>/<Directory_you_uploaded_to>/index.html
 
 A list of predetermined location are on the left hand side of the screen. Above them is a input box for filtering/sorting the list of locations. To filter the list, enter the search term and press enter. If any part of the term appears in the name or address of the location it is returned in a filtered list. To reset the list, Clear the contents of the filter box and hit enter.
 The locations phone number and hours of operation are retrieved by an asynchronous Ajax call and added to the controller(viewModel).
-Map markers change color on mouse over. When clicked they display a message box with location details. Message box is dismissed when clicking anywhere within the box.
+Map markers change color on mouse over. When clicked they display a infoWindow with location details and the selected marker bounces. Bouncing is stopped by clicking on another marker or clicking the marker again.
 
 Uncompressed style.css, app.js, and index.html are in  /src
 
