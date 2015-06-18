@@ -34,6 +34,7 @@ function Controller() {
     myFilter = ko.observable(''); // Filter by
     self.completeModel = ko.observableArray(); // Stores copy of self.locations
     var currentMarker = null;
+    var currentInfowindow = null;
     self.init = function() {
         self.loadMap();
         self.loadPOIs();
@@ -131,10 +132,15 @@ function Controller() {
                     '<span class="msg_address">' + POI.address + '</span>' +
                     '<span class="msg_hours">' + POI.phone + '</span>' +
                     '<span class="msg_name">' + POI.name + '</sapn>';
-                var infowindow = new google.maps.InfoWindow({
+                if (currentInfowindow) {
+                    currentInfowindow.close();
+                }
+                POI.marker.infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
-                infowindow.open(self.map, POI.marker);
+                // set reference to open infoWindow
+                currentInfowindow = POI.marker.infowindow;
+                POI.marker.infowindow.open(self.map, POI.marker);
                 // remove the bounce from the 'old' marker
                 if (currentMarker) currentMarker.setAnimation(null);
                 if (currentMarker === POI.marker) {
